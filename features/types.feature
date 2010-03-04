@@ -27,7 +27,7 @@ Feature: Type unification
     Given a context
       And the prefix f as "http://dh.tamu.edu/ns/fabulator/1.0#"
       And the prefix x as "http://dh.tamu.edu/ns/fabulator/xml/1.0#"
-    When I run the expression (x:xpath(x:parse-string("<foo><bar>baz</bar></foo>"), "/foo/bar")/@type)
+    When I run the expression (x:path(x:parse-string("<foo><bar>baz</bar></foo>"), "/foo/bar")/@type)
     Then I should get 1 item
       And item 0 should be [f:uri-prefix('x') + 'node']
 
