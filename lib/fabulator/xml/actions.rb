@@ -19,7 +19,7 @@ module Fabulator
           :from => [
             { :type => [ FAB_NS, 'string' ],
               :weight => 1.0,
-              :convert => Proc.new { |x| puts "converting from string to xml document"; (x.anon_node(LibXML::XML::Document.string(x.value), [ XML_NS, 'document' ]) rescue nil) }
+              :convert => Proc.new { |x| (x.anon_node(LibXML::XML::Document.string(x.value), [ XML_NS, 'document' ]) rescue nil) }
             }
           ]
         }
@@ -39,7 +39,7 @@ module Fabulator
           } - [ nil ]
         end
 
-        function 'xpath', [ XML_NS, 'node' ] do |ctx, args, ns|
+        function 'path', [ XML_NS, 'node' ] do |ctx, args, ns|
           xpath_ns = [ ]
           ns.each_pair do |p,h|
             xpath_ns << "#{p}:#{h}"
