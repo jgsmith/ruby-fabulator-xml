@@ -6,6 +6,8 @@
 
 XML functions and types for the Fabulator engine.
 
+Namespace: http://dh.tamu.edu/ns/fabulator/xml/1.0#
+
 == FEATURES/PROBLEMS:
 
 * function to run an XPath query against an XML document
