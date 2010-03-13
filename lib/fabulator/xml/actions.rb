@@ -13,13 +13,13 @@ module Fabulator
           :to => [
             { :type => [ FAB_NS, 'string' ],
               :weight => 1.0,
-              :convert => Proc.new { |x| x.anon_node(x.value.to_s, [ FAB_NS, 'string' ]) }
+              :convert => lambda { |x| x.anon_node(x.value.to_s, [ FAB_NS, 'string' ]) }
             }
           ],
           :from => [
             { :type => [ FAB_NS, 'string' ],
               :weight => 1.0,
-              :convert => Proc.new { |x| (x.anon_node(LibXML::XML::Document.string(x.value), [ XML_NS, 'document' ]) rescue nil) }
+              :convert => lambda { |x| (x.anon_node(LibXML::XML::Document.string(x.value), [ XML_NS, 'document' ]) rescue nil) }
             }
           ]
         }
@@ -28,7 +28,7 @@ module Fabulator
           :to => [
             { :type => [ FAB_NS, 'string' ],
               :weight => 1.0,
-              :convert => Proc.new { |x| x.anon_node(x.value.content, [ FAB_NS, 'string' ]) }
+              :convert => lambda { |x| x.anon_node(x.value.content, [ FAB_NS, 'string' ]) }
             }
           ]
         }
