@@ -28,7 +28,15 @@ module Fabulator
           :to => [
             { :type => [ FAB_NS, 'string' ],
               :weight => 1.0,
-              :convert => lambda { |x| x.anon_node(x.value.content, [ FAB_NS, 'string' ]) }
+              :convert => lambda { |x|
+                x.anon_node(
+                  (
+                    x.value.is_a?(String) ? x.value :
+                    x.value.is_a?(LibXML::XML::Attr) ? x.value.value :
+                    x.value.content
+                  ), [ FAB_NS, 'string' ]
+                )
+              }
             }
           ]
         }
