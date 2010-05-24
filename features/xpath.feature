@@ -1,5 +1,6 @@
 Feature: XPath evaluation
 
+  @1
   Scenario: Get the value of an element
     Given a context
       And the prefix f as "http://dh.tamu.edu/ns/fabulator/1.0#"

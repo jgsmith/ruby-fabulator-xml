@@ -31,9 +31,9 @@ module Fabulator
               :convert => lambda { |x|
                 x.anon_node(
                   (
-                    x.value.is_a?(String) ? x.value :
+                    x.value.is_a?(LibXML::XML::Node) ? x.value.content :
                     x.value.is_a?(LibXML::XML::Attr) ? x.value.value :
-                    x.value.content
+                    x.value.to_s
                   ), [ FAB_NS, 'string' ]
                 )
               }
@@ -59,11 +59,11 @@ module Fabulator
               nodes = nodes + (a.to([XML_NS,'document']).value.find(x.to_s, xpath_ns).to_a rescue [])
             }
           }
-          return nodes - [ nil ]
+#          return nodes - [ nil ]
           nodes.each {|ob|
             if !ob.nil?
               ob.each { |node|
-                res << node.content
+                res << ctx.anon_node(node, [ XML_NS, 'node' ])
               }
             end
           }
