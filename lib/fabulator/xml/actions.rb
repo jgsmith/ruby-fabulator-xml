@@ -41,15 +41,15 @@ module Fabulator
           ]
         }
 
-        function 'parse-string', [ XML_NS, 'document' ] do |ctx, args, ns|
+        function 'parse-string', [ XML_NS, 'document' ] do |ctx, args|
           args[0].collect { |a|
-            (ctx.anon_node(LibXML::XML::Document.string(a.to_s), [ XML_NS, 'document' ]) rescue nil)
+            (ctx.root.anon_node(LibXML::XML::Document.string(a.to_s), [ XML_NS, 'document' ]) rescue nil)
           } - [ nil ]
         end
 
-        function 'path', [ XML_NS, 'node' ] do |ctx, args, ns|
+        function 'path', [ XML_NS, 'node' ] do |ctx, args|
           xpath_ns = [ ]
-          ns.each_pair do |p,h|
+          ctx.each_namespace do |p,h|
             xpath_ns << "#{p}:#{h}"
           end
           res = [ ]
@@ -63,7 +63,7 @@ module Fabulator
           nodes.each {|ob|
             if !ob.nil?
               ob.each { |node|
-                res << ctx.anon_node(node, [ XML_NS, 'node' ])
+                res << ctx.root.anon_node(node, [ XML_NS, 'node' ])
               }
             end
           }
