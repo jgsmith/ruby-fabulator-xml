@@ -1,11 +1,9 @@
 History.txt
 Manifest.txt
-PostInstall.txt
 README.rdoc
 Rakefile
-lib/fabulator-xml.rb
-script/console
-script/destroy
-script/generate
+lib/fabulator/xml.rb
+lib/fabulator/xml/actions.rb
+lib/fabulator/xml/version.rb
 test/test_fabulator-xml.rb
 test/test_helper.rb

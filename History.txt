@@ -2,3 +2,10 @@
 
 * 1 major enhancement:
   * Initial release
+
+=== 0.0.2
+
+* 2 minor enhancement:
+  * Noted dependence on fabulator gem
+  * Included fabulator-xml.rb so nothing complains about missing files
+    when being loaded.
