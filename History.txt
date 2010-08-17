@@ -1,7 +1,9 @@
-=== 0.0.1 2010-03-01
+=== 0.0.3
 
-* 1 major enhancement:
-  * Initial release
+* 1 minor enhancement:
+  * Added require of the Fabulator library
+  * Added require of 'fabulator/xml' to 'fabulator-xml' to make config.gem
+    work in Rails apps
 
 === 0.0.2
 
@@ -9,3 +11,9 @@
   * Noted dependence on fabulator gem
   * Included fabulator-xml.rb so nothing complains about missing files
     when being loaded.
+
+=== 0.0.1 2010-03-01
+
+* 1 major enhancement:
+  * Initial release
+
