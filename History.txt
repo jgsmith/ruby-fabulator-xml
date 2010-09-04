@@ -1,6 +1,6 @@
-=== 0.0.3
+=== 0.0.3 2010-08-16
 
-* 1 minor enhancement:
+* 2 minor enhancements:
   * Added require of the Fabulator library
   * Added require of 'fabulator/xml' to 'fabulator-xml' to make config.gem
     work in Rails apps

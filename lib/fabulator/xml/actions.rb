@@ -4,8 +4,7 @@ module Fabulator
   XML_NS = "http://dh.tamu.edu/ns/fabulator/xml/1.0#"
   module Xml
     module Actions
-      class Lib
-        include Fabulator::ActionLib
+      class Lib < Fabulator::ActionLib
 
         register_namespace XML_NS
 
