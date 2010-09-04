@@ -1,3 +1,9 @@
+=== 0.0.4
+
+* 1 minor enhancement
+  * Bump minimum version of Fabulator
+  * ActionLib => TagLib
+
 === 0.0.3 2010-08-16
 
 * 2 minor enhancements:
