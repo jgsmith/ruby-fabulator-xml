@@ -6,7 +6,7 @@ module Fabulator
     module Actions
       class Lib < Fabulator::TagLib
 
-        register_namespace XML_NS
+        namespace XML_NS
 
         register_type 'document', {
           :to => [
