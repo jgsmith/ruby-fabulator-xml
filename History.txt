@@ -1,4 +1,4 @@
-=== 0.0.4
+=== 0.0.4 2010-09-07
 
 * 1 minor enhancement
   * Bump minimum version of Fabulator
