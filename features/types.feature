@@ -13,7 +13,7 @@ Feature: Type unification
       And the prefix x as "http://dh.tamu.edu/ns/fabulator/xml/1.0#"
     When I run the expression (x:parse-string("<foo />")/@type)
     Then I should get 1 item
-      And item 0 should be [f:uri-prefix('x') + 'document']
+      And item 0 should be [f:uri('x:document')]
 
   Scenario: Get the type of a parsed string value
     Given a context
@@ -21,7 +21,7 @@ Feature: Type unification
       And the prefix x as "http://dh.tamu.edu/ns/fabulator/xml/1.0#"
     When I run the expression (x:document("<foo />")/@type)
     Then I should get 1 item
-      And item 0 should be [f:uri-prefix('x') + 'document']
+      And item 0 should be [f:uri('x:document')]
 
   Scenario: Get the value of an element
     Given a context
@@ -29,5 +29,5 @@ Feature: Type unification
       And the prefix x as "http://dh.tamu.edu/ns/fabulator/xml/1.0#"
     When I run the expression (x:path(x:parse-string("<foo><bar>baz</bar></foo>"), "/foo/bar")/@type)
     Then I should get 1 item
-      And item 0 should be [f:uri-prefix('x') + 'node']
+      And item 0 should be [f:uri('x:node')]
 

@@ -3,6 +3,7 @@
 * 1 minor enhancement
   * Bump minimum version of Fabulator
   * ActionLib => TagLib
+  * register_type => has_type
 
 === 0.0.3 2010-08-16
 

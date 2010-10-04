@@ -8,37 +8,36 @@ module Fabulator
 
         namespace XML_NS
 
-        register_type 'document', {
-          :to => [
-            { :type => [ FAB_NS, 'string' ],
-              :weight => 1.0,
-              :convert => lambda { |x| x.anon_node(x.value.to_s, [ FAB_NS, 'string' ]) }
-            }
-          ],
-          :from => [
-            { :type => [ FAB_NS, 'string' ],
-              :weight => 1.0,
-              :convert => lambda { |x| (x.anon_node(LibXML::XML::Document.string(x.value), [ XML_NS, 'document' ]) rescue nil) }
-            }
-          ]
-        }
+        has_type :document do
+          going_to [ FAB_NS, 'string' ] do
+            weight 1.0
+            converting do |x|
+              x.root.value.to_s
+            end
+          end
+ 
+          coming_from [ FAB_NS, 'string' ] do
+            weight 1.0
+            converting do |x|
+              (x.root.anon_node(LibXML::XML::Document.string(x.root.value), [ XML_NS, 'document' ]) rescue nil)
+            end
+          end
+        end
 
-        register_type 'node', {
-          :to => [
-            { :type => [ FAB_NS, 'string' ],
-              :weight => 1.0,
-              :convert => lambda { |x|
-                x.anon_node(
-                  (
-                    x.value.is_a?(LibXML::XML::Node) ? x.value.content :
-                    x.value.is_a?(LibXML::XML::Attr) ? x.value.value :
-                    x.value.to_s
-                  ), [ FAB_NS, 'string' ]
-                )
-              }
-            }
-          ]
-        }
+        has_type :node do
+          going_to [ FAB_NS, 'string' ] do
+            weight 1.0
+            converting do |x|
+              x.root.anon_node(
+                (
+                  x.root.value.is_a?(LibXML::XML::Node) ? x.root.value.content :
+                  x.root.value.is_a?(LibXML::XML::Attr) ? x.root.value.value :
+                  x.root.value.to_s
+                ), [ FAB_NS, 'string' ]
+              )
+            end
+          end
+        end
 
         function 'parse-string', [ XML_NS, 'document' ] do |ctx, args|
           args[0].collect { |a|
